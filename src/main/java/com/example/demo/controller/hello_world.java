@@ -1,14 +1,25 @@
 package com.example.demo.controller;
 import com.example.demo.models.HelloWorldBean;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Locale;
 
 @RestController
 public class hello_world {
 
-//    @RequestMapping(method = RequestMethod.GET, path = "helloWorld")
+    private MessageSource messageSource;
+
+    public hello_world(MessageSource messageSource) {
+        this.messageSource = messageSource;
+    }
+
+    //    @RequestMapping(method = RequestMethod.GET, path = "helloWorld")
     @GetMapping(path = "helloWorld")
     public String helloWorld(){
-        return "Hello World V2";
+        Locale locale = LocaleContextHolder.getLocale();
+        return messageSource.getMessage("good.morning.message", null, "Default message", null);
     }
 
     @GetMapping(path = "helloWorld-bean")
