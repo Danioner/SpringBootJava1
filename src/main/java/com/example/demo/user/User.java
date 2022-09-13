@@ -1,5 +1,6 @@
 package com.example.demo.user;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
@@ -8,6 +9,7 @@ import java.time.LocalDate;
 public class User {
     private Integer id;
     @Size(min=2, message = "The name must have atleast 2 characters")
+    @JsonProperty("user_name")
     private String name;
     @Past(message = "The birthdate must be in the past")
     private LocalDate birthDate;

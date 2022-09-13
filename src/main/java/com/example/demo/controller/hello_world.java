@@ -15,11 +15,11 @@ public class hello_world {
         this.messageSource = messageSource;
     }
 
-    //    @RequestMapping(method = RequestMethod.GET, path = "helloWorld")
+    //TODO > Tambien puede ser @RequestMapping(method = RequestMethod.GET, path = "helloWorld")
     @GetMapping(path = "helloWorld")
     public String helloWorld(){
         Locale locale = LocaleContextHolder.getLocale();
-        return messageSource.getMessage("good.morning.message", null, "Default message", null);
+        return messageSource.getMessage("good.morning.message", null, "Default message", locale);
     }
 
     @GetMapping(path = "helloWorld-bean")
